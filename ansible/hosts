@@ -1,0 +1,7 @@
+[webserver]
+40.89.187.153
+
+[webserver:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_user=adminuser
+ansible_ssh_pass=Ys2O6veKFeKmJnlR

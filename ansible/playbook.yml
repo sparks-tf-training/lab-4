@@ -1,0 +1,10 @@
+# ansible/playbook.yml
+
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install NGINX
+      apt:
+        name: nginx
+        state: present
