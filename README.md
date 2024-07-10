@@ -50,7 +50,7 @@ In a `terraform.tfvars` file, set the values for the variables:
 ```hcl
 resource_group_name = "terraform-training"
 name                = "webserver"
-subnet_id           = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/terraform-training/providers/Microsoft.Network/virtualNetworks/example-network/subnets/example-subnet"
+subnet_id           = "example-subnet"
 ```
 
 Add the following code to your `main.tf` file to retrieve the resource group and subnet:
