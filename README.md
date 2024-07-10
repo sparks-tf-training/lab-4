@@ -39,8 +39,18 @@ variable "name" {
   type        = string
 }
 
-variable "subnet_id" {
-  description = "The ID of the subnet"
+variable "vnet_name" {
+  description = "The name of the virtual network"
+  type        = string
+}
+
+variable "vnet_subnet_name" {
+  description = "The name of the subnet"
+  type        = string
+}
+
+variable "image_name" {
+  description = "The name of the image"
   type        = string
 }
 ```
@@ -50,7 +60,9 @@ In a `terraform.tfvars` file, set the values for the variables:
 ```hcl
 resource_group_name = "terraform-training"
 name                = "webserver"
-subnet_id           = "example-subnet"
+vnet_name           = "example-vnet"
+vnet_subnet_name    = "example-subnet"
+image_name          = "webserver"
 ```
 
 Add the following code to your `main.tf` file to retrieve the resource group and subnet:
@@ -107,6 +119,12 @@ resource "azurerm_virtual_machine" "vm" {
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
+  }
+
+  os_profile {
+    computer_name  = var.name
+    admin_username = "adminuser"
+    admin_password = "P@ssw0rd1234!"
   }
 
   os_profile_linux_config {
